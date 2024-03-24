@@ -15,8 +15,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BrainDump</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
-    <script src="{{url_for('static', filename='styles/script.js')}}"></script>
+    <link rel="stylesheet" href="../static/styles/styles.css">
+    <script src="../static/styles/script.js"></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
@@ -39,10 +39,9 @@
             {% for i in range(0, num): %}
             <div class="timeline-item">
                 <h4>{{ stageNms[i] }}</h4>
+            <div class="timeline-item" id="invis">
                 <div class="timeline-check">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 48 49" fill="none">
-                        <circle cx="24" cy="24.5" r="22.5" stroke="black" stroke-width="3" />
-                    </svg>
+                    
                     <div class="timeline-box">
                         <p>{{ stageDesc[i] }}</p>
                     </div>

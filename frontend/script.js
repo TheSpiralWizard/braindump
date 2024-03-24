@@ -3,7 +3,8 @@ let num = 4;
 document.addEventListener("DOMContentLoaded", function () {
 
     const scroll = document.getElementById('scroll');
-
+    
+    // Add click event listener to the button
     scroll.addEventListener('click', function () {
         window.scrollTo({
             top: document.body.scrollHeight,
@@ -55,8 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             timeline.appendChild(createTimelineItem());
         }
     }
-
+    
     addTimelineItems(num); // Change the number to create as many timeline items as desired
 
 });
-
