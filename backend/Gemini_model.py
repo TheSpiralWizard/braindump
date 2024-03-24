@@ -48,7 +48,7 @@ def process(input):
     project_stage_names = []
     project_stage_descriptions = []
     project_resources = []
-    genai.configure(api_key="AIzaSyABrxRzsA88dysLAUnpWu03yQahNaF9TBQ")
+    genai.configure(api_key="")
     model = genai.GenerativeModel('gemini-1.0-pro-001')
     chat = model.start_chat(history=[])
 

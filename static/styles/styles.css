@@ -252,7 +252,7 @@ p {
 }
 
 #front-image {
-    margin-left: 250px;
+    margin-left: 150px;
     width: 30%;
 }
 
@@ -262,6 +262,10 @@ p {
     gap: 75px;
     text-align: center;
     padding: 100px;
+
+    h3 {
+        color: var(--color-primary);
+    }
 }
 
 .signup-full {

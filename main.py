@@ -31,7 +31,7 @@ def timeline():
         session.pop("topic", None)
 
         return redirect(url_for("default"))
-
+        
     if "name" in session or "topic" in session:
         name = session["name"]
         topic = session["topic"]
