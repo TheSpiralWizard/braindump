@@ -16,7 +16,7 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
   #text = text.replace('•', '  *')
   #return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
-genai.configure(api_key="AIzaSyABrxRzsA88dysLAUnpWu03yQahNaF9TBQ")
+genai.configure(api_key="")
 
 #check which Gemini models are available
 #for m in genai.list_models():
