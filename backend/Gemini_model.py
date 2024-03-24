@@ -59,7 +59,7 @@ def process(input):
     text = text.replace("#","")
     text = text.replace("\n"," ")
     project_names.append(text)
-
+  
     # Description
     response = chat.send_message("Give me a succinct description of what this project would entail (what is the purpose of this project and what does it do?) and what technical skills (softwares, etc.) I need to learn to complete it. It must be MAXIMUM two sentences.")
     #text = to_markdown(response.text)
