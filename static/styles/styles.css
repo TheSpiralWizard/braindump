@@ -106,15 +106,19 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 64px 0;
+    margin: auto;
     gap: 32px;
 
     h2 {
+        margin-top: 64px;
         color: var(--color-black);
+        text-align: center;
     }
 
     p {
         color: var(--color-black-75);
+        margin: 32px;
+        text-align: center;
     }
 }
 
@@ -129,7 +133,11 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 32px;
+
+    h4 {
+        color: var(--color-primary);
+    }
 }
 
 .timeline-check {
