@@ -41,7 +41,8 @@ project_resources = []
 chat = model.start_chat(history=[])
 
 def names (): 
-    response = chat.send_message("I am a university student who is interested in working on projects about the following: " + interests + ". Think of a personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output). For example, if I am interested in working on stock prediction using machine learning, then you may output 'Sentiment Analysis for Stock Prediction.'")
+    response = chat.send_message("I am a university student who is interested in working on projects about the following: " + interests + ". Think of a personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output).")
+    #response = chat.send_message("I am a university student who is interested in working on projects about the following: " + interests + ". Think of a personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output). For example, if I am interested in working on stock prediction using machine learning, then you may output 'Sentiment Analysis for Stock Prediction.'")
     #text = to_markdown(response.text)
     text = response.text
     text = text.replace("*","")
@@ -73,7 +74,8 @@ def stage_count ():
 
 def stages (): 
     for i in range (1, num_stages + 1):
-        response = chat.send_message("Give me only the name for stage " + str(i) + " of the plan. For example, if my project was sentiment analysis for stock behavior prediction, then the output you produce (representing a stage name) could be 'Learning PyTorch'.")
+        #response = chat.send_message("Give me only the name for stage " + str(i) + " of the plan. For example, if my project was sentiment analysis for stock behavior prediction, then the output you produce (representing a stage name) could be 'Learning PyTorch'.")
+        response = chat.send_message("Give me only the name for stage " + str(i) + " of the plan.")
         #text = to_markdown(response.text)
         text = response.text
         text = text.replace("*","")
@@ -81,7 +83,8 @@ def stages ():
         text = text.replace("\n","")
         project_stage_names.append(text)
 
-        response = chat.send_message("For this stage, give me a succinct description of the stage and what it entails. For example, if my project was sentiment analysis for stock behavior prediction and the current stage was 'Learning PyTorch', then your output could be 'PyTorch is a machine learning library for Pyton. By learning PyTorch, you can work with language models to perform sentiment analysis of your data.'")
+        #response = chat.send_message("For this stage, give me a succinct description of the stage and what it entails. For example, if my project was sentiment analysis for stock behavior prediction and the current stage was 'Learning PyTorch', then your output could be 'PyTorch is a machine learning library for Pyton. By learning PyTorch, you can work with language models to perform sentiment analysis of your data.'")
+        response = chat.send_message("For this stage, give me a succinct description of the stage and what it entails.")
         #text = to_markdown(response.text)
         text = response.text
         text = text.replace("*","")
@@ -92,7 +95,8 @@ def stages ():
         resources()
 
 def resources (): 
-    response = chat.send_message("For this stage of the project, locate me one resource to learn the skill required for it. For example, if the personal project is sentiment analysis for stock behavior prediction, and if the stage name is 'Fine Tuning', then you must give me a YouTube tutorial or an article that teaches fine-tuning, that is relevant to my project, to me. Only output the name of the resource (that is, the name of YouTube video or the name of the article). For example, your output may be 'Fine-Tuning for Beginners'.")
+    #response = chat.send_message("For this stage of the project, locate me the name of one resource to learn the skill required for it. For example, if the personal project is sentiment analysis for stock behavior prediction, and if the stage name is 'Fine Tuning', then you must give me the name of a YouTube tutorial or an article that teaches fine-tuning, that is relevant to my project, to me. Only output the name of the resource (that is, the name of YouTube video or the name of the article). Do not give me the link.")
+    response = chat.send_message("For this stage of the project, locate me the name of one resource to learn the skill required for it. Only output the name of the resource (that is, the name of YouTube video or the name of the article). Do not give me the link.")
     #text = to_markdown(response.text)
     text = response.text
     text = text.replace("*","")
@@ -115,11 +119,11 @@ for i in range (iterator):
 
 def process():
     final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
+    #final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, num_stages]
     return final_list
-
-
 
 if __name__ == "__main__":
     final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
+    #final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, num_stages]
     print(final_list)
     #return final_list
