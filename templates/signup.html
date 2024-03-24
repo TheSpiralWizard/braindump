@@ -13,8 +13,8 @@
     rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BrainDump</title>
-  <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
-  <script src="{{url_for('static', filename='styles/script.js')}}"></script>
+  <link rel="stylesheet" href="../static/styles/styles.css">
+  <script src="../static/styles/script.js"></script>
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
@@ -30,7 +30,7 @@
       <h2 id="slogan1">From an IDEA</h2>
       <h2 id="slogan2">To a PROJECT</h2>
       <p id="powered">Powered by Google Gemini</p>
-      <input class="get-started" type="button" value="Get Started" />
+      <input id="scroll" class="get-started" type="button" value="Get Started" />
     </div>
     <img src="https://www.techempower.com/wp-content/uploads/2023/06/app2.webp" id="front-image">
   </div>
@@ -44,13 +44,13 @@
     <div class="signup">
       <h4>Learn With Us</h4>
       <div class="signup-text">
-        <form action="#" method="post">
-          <h5>Name</h5>
-          <input type="text" name="name" id="name" placeholder="Enter your name here..." class="signup-info">
-          <h5>What would you like to learn?</h5> 
-          <input type="text" name="topic" id="topic" placeholder="Enter the topic you wish to make a project about..." class="signup-info">
-          <input class="submit" type="submit" value="Submit" />
-        </form>
+        <h5>Name</h5>
+        <input type="text" placeholder="Enter your name here..." class="signup-info">
+        <h5>What would you like to learn?</h5>
+        <input type="text" placeholder="Enter the topic you wish to make a project about..." class="signup-info">
+        <a href="timeline.html">
+          <input class="submit" type="button" value="Submit" />
+        </a>
       </div>
     </div>
     <img
