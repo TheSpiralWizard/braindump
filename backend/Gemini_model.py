@@ -6,6 +6,8 @@
 import google.generativeai as genai
 import os
 
+
+"""
 #from IPython.display import display
 #from IPython.display import Markdown
 
@@ -24,12 +26,12 @@ model = genai.GenerativeModel('gemini-1.0-pro-001')
 
 chat = model.start_chat(history=[])
 
-def set_input(input):
-    global interests
-    interests = input
-
-interests = "agriculture"
+#interests = "agriculture"
 #interests = ""
+
+
+global interests
+interests = ""
 
 project_names = []
 project_descriptions = []
@@ -37,7 +39,82 @@ project_stage_names = []
 project_stage_descriptions = []
 project_resources = []
 #num_stages = 0
+"""
+def process(input):
+    interests = input
+    project_names = []
+    project_descriptions = []
+    project_stage_names = []
+    project_stage_descriptions = []
+    project_resources = []
+    genai.configure(api_key="AIzaSyABrxRzsA88dysLAUnpWu03yQahNaF9TBQ")
+    model = genai.GenerativeModel('gemini-1.0-pro-001')
+    chat = model.start_chat(history=[])
 
+    # Names
+    response = chat.send_message("I am a university student who is interested in working on projects about the following: " + interests + ". Think of a small scale personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output). The title CANNOT be more than ten words long")
+    #text = to_markdown(response.text)
+    text = response.text
+    text = text.replace("*","")
+    text = text.replace("#","")
+    text = text.replace("\n"," ")
+    project_names.append(text)
+
+    # Description
+    response = chat.send_message("Give me a succinct description of what this project would entail (what is the purpose of this project and what does it do?) and what technical skills (softwares, etc.) I need to learn to complete it. It must be MAXIMUM two sentences.")
+    #text = to_markdown(response.text)
+    text = response.text
+    text = text.replace("*","")
+    text = text.replace("#","")
+    text = text.replace("\n"," ")
+    project_descriptions.append(text)
+
+    # Stage Count
+    response = chat.send_message("I want a plan for this project that is separated into multiple stages. Analyze the project title and the description to figure out the stages. How many stages will there be? Your only output should be the number, for example, '1', '2', etcetera.")
+    text = response.text
+    num_stages = text
+    num_stages = num_stages.replace("*","")
+    text = text.replace("#","")
+    text = text.replace("\n"," ")
+    #to_markdown(num_stages)
+    print(num_stages)
+    #print(type(num_stages))
+    num_stages = int(num_stages) #fix for type conversion error?
+
+    # Stages
+    for i in range (1, num_stages + 1):
+        response = chat.send_message("Give me only the name for stage " + str(i) + " of the plan. Make the name a maximum of five words")
+        #text = to_markdown(response.text)
+        text = response.text
+        text = text.replace("*","")
+        text = text.replace("#","")
+        text = text.replace("\n"," ")
+        project_stage_names.append(text)
+
+        response = chat.send_message("For this stage, give me a succinct description of the stage and what it entails. Make the description a maximum of two sentences. DO NOT INCLUDE THE PREVIOUS STAGE TITLE IN YOUR DESCRIPTION.")
+        #text = to_markdown(response.text)
+        text = response.text
+        text = text.replace("*","")
+        text = text.replace("#","")
+        text = text.replace("\n", " ")
+        text = text.replace("Stage " + str(i) + ": " + project_stage_names[i-1], " ")
+        project_stage_descriptions.append(text)
+        
+        # Resources 
+        response = chat.send_message("For this stage of the project, locate me one resource to learn the skill required for it. Display only the title of the resource and nothing else.")
+        #text = to_markdown(response.text)
+        text = response.text
+        text = text.replace("*","")
+        text = text.replace("#","")
+        text = text.replace("\n"," ")
+
+        project_resources.append(text)
+
+    final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
+    return final_list
+
+
+"""
 chat = model.start_chat(history=[])
 
 def names (): 
@@ -113,7 +190,9 @@ iterator = 1
 for i in range (iterator):
     run()
 
-def process():
+def process(input):
+    interests = input
+    run()
     final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
     return final_list
 
@@ -123,3 +202,32 @@ if __name__ == "__main__":
     final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
     print(final_list)
     #return final_list
+"""
+"""
+final_list = process("Farming")
+names = final_list[0]
+descriptions = final_list[1]
+stageNames = final_list[2]
+stageDescriptions = final_list[3]
+resources = final_list[4]
+numStages = final_list[5]
+print("Names: " + str(names))
+print("\n")
+
+print("Descriptions: " + str(descriptions))
+print("\n")
+
+print("Stage Names: " + str(stageNames))
+print("\n")
+
+for s in stageDescriptions:
+    print("Stage Description: " + s)
+
+print("\n")
+
+print("Resources: " + str(resources))
+print("\n")
+
+print("Num Stages: " + str(numStages))
+print("\n")
+"""
