@@ -34,7 +34,7 @@ let num_stages = 0;
 chat = model.start_chat(history=[])
 
 async function names () {
-    response = chat.send_message("I am a university student who is interested in working on projects about the following subjects: ", interests, ". Think of a personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output). For example, if I am interested in working on stock prediction using machine learning, then you may output 'Sentiment Analysis for Stock Prediction.'");
+    response = chat.send_message("I am a university student who is interested in working on projects about the following subjects: " + interests + ". Think of a personal project I can perform using the information I have provided. Give me ONLY the name of this project (the name of the project must be your only output). For example, if I am interested in working on stock prediction using machine learning, then you may output 'Sentiment Analysis for Stock Prediction.'");
     const text = response.text();
     console.log(text);
     project_names.push(text);
@@ -65,7 +65,7 @@ async function stages () {
         console.log(text);
         project_stage_descriptions.push(text);
 
-        resources(base_user_prompt);
+        resources();
     }
 }
 
