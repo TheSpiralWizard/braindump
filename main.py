@@ -24,8 +24,14 @@ def signup():
             return render_template("signup.html")
 
 
-@app.route("/timeline")
+@app.route("/timeline", methods=["POST", "GET"])
 def timeline():
+    if request.method == "POST":
+        session.pop("name", None)
+        session.pop("topic", None)
+
+        return redirect(url_for("default"))
+
     if "name" in session or "topic" in session:
         name = session["name"]
         topic = session["topic"]
