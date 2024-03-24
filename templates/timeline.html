@@ -15,8 +15,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BrainDump</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+    <script src="{{url_for('static', filename='styles/script.js')}}"></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
@@ -29,10 +29,10 @@
         </div>
         <div class="timeline-heading">
             <h1>
-                Make a Website
+                Welcome {{ name }}
             </h1>
             <h5>
-                These are the steps for you to make a website.
+                These are the steps for you to learn {{ topic }}. 
             </h5>
         </div>
         <div class="timeline">

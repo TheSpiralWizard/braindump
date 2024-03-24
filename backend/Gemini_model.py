@@ -74,6 +74,12 @@ iterator = 1
 for i in range (iterator):
     run()
 
+def process():
+    final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
+    return final_list
+
+
+
 if __name__ == "__main__":
     final_list = [project_names, project_descriptions, project_stage_names, project_stage_descriptions, project_resources, num_stages]
     print(final_list)
