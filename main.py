@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-# from backend import Gemini_model
+from backend import Gemini_model
 
 app = Flask(__name__)
 app.secret_key = "very_secret"
@@ -30,7 +30,15 @@ def timeline():
         name = session["name"]
         topic = session["topic"]
 
-        return render_template("timeline.html", name=name, topic=topic)
+        parentList = Gemini_model.process(topic)
+
+        name = parentList[0][0]
+        description = parentList[1][0]
+        numStages = parentList[5]
+        stageNames = parentList[2]
+        stageDescriptions = parentList[3]
+
+        return render_template("timeline.html", name=name, projectDesc=description, num=numStages, stageNms=stageNames, stageDesc=stageDescriptions)
     else:
         return redirect(url_for("default"))
 

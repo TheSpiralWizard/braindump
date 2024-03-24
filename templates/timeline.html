@@ -16,8 +16,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BrainDump</title>
     <link rel="stylesheet" href="../static/styles/styles.css">
-    <script src="../static/styles/script.js"></script>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+    <script src="{{url_for('static', filename='styles/script.js')}}"></script>
 </head>
 
 <body>
@@ -29,25 +29,28 @@
         </div>
         <div class="timeline-heading">
             <h1>
-                Make a Website
+                {{ name }}
             </h1>
             <h5>
-                These are the steps for you to make a website.
+                 {{ projectDesc }}. 
             </h5>
         </div>
         <div class="timeline">
-            <div class="timeline-item" id="invis">
-                <h4>String</h4>
+            {% for i in range(0, num): %}
+            <div class="timeline-item">
+                <h4>{{ stageNms[i] }}</h4>
+            <div class="timeline-item">
                 <div class="timeline-check">
                     <div class="timeline-box">
-                        <p>(Resource Name) will teach you (description)</p>
+                        <p>{{ stageDesc[i] }}</p>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+            <button class="timeline-button">
+                <h5>Finish</h5>
+            </button>
         </div>
-        <button class="timeline-button">
-            <h5>Finish</h5>
-        </button>
     </div>
 </body>
 
