@@ -138,7 +138,6 @@ p {
     }
 }
 
-
 .timeline-box {
     display: flex;
     width: 1080px;
@@ -152,6 +151,48 @@ p {
 
     p {
         color: var(--color-black-75);
+    }
+}
+
+.timeline-item-complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    h4 {
+        color: var(--color-black-10);
+        text-decoration: line-through;
+    }
+}
+
+.timeline-check-complete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 40px;
+        height: 40px;
+        color: var(--color-primary);
+    }
+}
+
+.timeline-box-complete {
+    display: flex;
+    width: 1080px;
+    padding: 32px;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 16px;
+    background: var(--color-white);
+    box-shadow: 0px 10px 20px 0px rgba(0, 40, 100, 0.25);
+    margin-left: 64px;
+
+    p {
+        color: var(--color-black-10);
+        text-decoration: line-through;
     }
 }
 
