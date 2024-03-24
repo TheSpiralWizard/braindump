@@ -276,7 +276,8 @@ p {
 }
 
 .get-started:hover,
-.submit:hover {
+.submit:hover,
+.timeline-button:hover {
     background: var(--color-black-10);
     color: var(--color-primary);
     transition: all .2s ease-in-out;
